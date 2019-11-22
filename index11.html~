@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>hello world my first webhook</title>
+  <title>우리대학교 동문회 홈</title>
   <link rel="stylesheet" href="css/index11.css">
   <script src="script/jquery-3.3.1.min.js"></script>
   <script src="script/index11.js" defer="defer"></script>
