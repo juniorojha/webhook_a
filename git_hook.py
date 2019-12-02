@@ -2,6 +2,7 @@ from flask import Flask, request
 import json
 import hmac
 import os
+import subprocess
 import hashlib
 
 app = Flask(__name__)
@@ -22,6 +23,7 @@ def foo():
    #print (data)
    flag = validate_signature(request.data)
    #print(flag)
+   subprocess.call("git_pull.sh")
    return "OK"
 
 if __name__ == '__main__':
