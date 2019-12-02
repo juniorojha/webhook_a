@@ -1,0 +1,34 @@
+Script started on Tue 26 Nov 2019 02:53:07 PM UTC
+]0;root@ip-172-31-39-3:~/repos/webhook[?1034h[root@ip-172-31-39-3 webhook]# cd script
+]0;root@ip-172-31-39-3:~/repos/webhook/script[root@ip-172-31-39-3 script]# ls
+index11.js
+]0;root@ip-172-31-39-3:~/repos/webhook/script[root@ip-172-31-39-3 script]# vim [K[K[K[Kcd ..
+]0;root@ip-172-31-39-3:~/repos/webhook[root@ip-172-31-39-3 webhook]# ls
+[0m[01;34mcss[0m  git_hook.py  git_hook.py_org  index11.html  nohup.out  [01;34mscript[0m  typescript
+]0;root@ip-172-31-39-3:~/repos/webhook[root@ip-172-31-39-3 webhook]# vim  git_hook.py
+[?1049h[?1h=[?2004h[2;1H▽[6n[2;1H  [1;1H]11;?[1;59r[?12;25h[?12l[?25h[27m[m[H[2J[?25l[59;1H"git_hook.py" 28L, 686C[>c[1;1H[35mfrom[m flask [35mimport[m Flask, request
+[35mimport[m json
+[35mimport[m hmac
+[35mimport[m os
+[35mimport[m hashlib
+
+app = Flask(__name__)
+
+SECRET_KEY = os.getenv([31m'WEBHOOK_SECRET_KEY'[m)
+
+[33mdef[m [36mvalidate_signature[m(data):
+    sha_name, signature = request.headers[[31m'X-Hub-Signature'[m].split([31m'='[m)
+    [33mif[m sha_name != [31m'sha1'[m:[14;9H[33mreturn[m [36mFalse[m[16;5Hmac = hmac.new([36mstr[m(SECRET_KEY), msg=[36mstr[m(data), digestmod=hashlib.sha1)
+    [33mreturn[m hmac.compare_digest(mac.hexdigest(), [36mstr[m(signature))
+
+[35m@[m[36mapp.route[m([31m'/payload'[m,methods=[[31m'POST'[m])
+[33mdef[m [36mfoo[m():
+   data = json.loads(request.data)
+   [34m#print (data)[m
+   flag = validate_signature(request.data)
+   [34m#print(flag)[m
+   [33mreturn[m [31m"OK"[m
+
+[33mif[m __name__ == [31m'__main__'[m:
+   app.run(host=[31m'0.0.0.0'[m, port=[31m8000[m)
+[1m[34m~                                                                                   [30;1H~                                                                                   [31;1H~                                                                                   [32;1H~                                                                                   [33;1H~                                                                                   [34;1H~                                                                                   [35;1H~                                                                                   [36;1H~                                                                                   [37;1H~                                                                                   [38;1H~                                                                                   [39;1H~                                                                                   [40;1H~                                                                                   [41;1H~                                                                                   [42;1H~                                                                                   [43;1H~                                                                                   [44;1H~                                                                                   [45;1H~                                                                                   [46;1H~                                                                                   [47;1H~                                                                                   [48;1H~                                                                                   [49;1H~                                                                                   [50;1H~                                                                                   [51;1H~                                                                                   [52;1H~                                                                                   [53;1H~                                                                                   [54;1H~                                                                
